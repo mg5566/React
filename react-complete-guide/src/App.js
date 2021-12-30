@@ -1,8 +1,11 @@
+import ExpenseItem from "./components/ExpenseItem";
 
 function App() {
   return (
     <div>
-      Let's start React!
+      <h2>Let's get started React!</h2>
+      <p>This is also Visible</p>
+      <ExpenseItem />
     </div>
   );
 }
