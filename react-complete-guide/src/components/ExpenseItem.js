@@ -1,6 +1,14 @@
+import "./ExpenseItem.css";
+
 const ExpenseItem = () => {
   return (
-    <>TODO: ExpenseItem</>
+    <div className="expense-item">
+      <div>Date</div>
+      <div className="expense-item__description">
+        <h2>Title</h2>
+        <div className="expense-item__price">Amount</div>
+      </div>
+    </div>
   );
 };
 
