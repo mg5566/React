@@ -1,11 +1,10 @@
-import Card from "./Card.js";
+import Card from "../UI/Card.js";
 import ExpenseDate from "./ExpenseDate.js";
 import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
   return (
     <Card className="expense-item">
-      {/* <div>{expenseDate.toISOString()}</div> */}
       <ExpenseDate date={props.date} />
       <div className="expense-item__description">
         <h2>{props.title}</h2>
