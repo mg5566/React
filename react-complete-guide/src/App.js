@@ -1,19 +1,33 @@
-import ExpenseItem from "./components/ExpenseItem";
+import Expenses from "./components/Expenses.js";
 
 function App() {
-  // const expenseDate = new Date().toISOString();
-  const expenseDate = new Date();
-  const expenseTitle = "Desktop PC";
-  const expenseAmount = "200.00"
+  const expenses = [
+    {
+      id: 0,
+      expenseDate: new Date(),
+      expenseTitle: "Desktop PC",
+      expenseAmount: "2000.00",
+    },
+    {
+      id: 1,
+      expenseDate: new Date(),
+      expenseTitle: "PS5",
+      expenseAmount: "480.00",
+    },
+    {
+      id: 2,
+      expenseDate: new Date(),
+      expenseTitle: "Monitor",
+      expenseAmount: "600.00",
+    },
+  ];
 
   return (
     <div>
       <h2>Let's get started React!</h2>
       <p>This is also Visible</p>
-      <ExpenseItem
-        title={expenseTitle}
-        amount={expenseAmount}
-        date={expenseDate}
+      <Expenses
+        expenses={expenses}
       />
     </div>
   );
