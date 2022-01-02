@@ -5,12 +5,16 @@ import "./Expenses.css";
 import ExpenseFilter from "./ExpenseFilter.js";
 
 const Expenses = (props) => {
-  const [filteredYear, setFilteredYear] = useState(2022);
+  const [filteredYear, setFilteredYear] = useState("2021");
 
   const filterChangeHandler = (selectedYear) => {
     console.log("Expenses.js", selectedYear);
     setFilteredYear(selectedYear);
   };
+
+  const filteredExpenses = props.expenses.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
 
   return (
     <Card className="expenses">
@@ -18,11 +22,11 @@ const Expenses = (props) => {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      {props.expenses.map((item) => {
+      {filteredExpenses.map((item) => {
         return (
           <ExpenseItem
             key={item.id}
-            title={item.tile}
+            title={item.title}
             amount={item.amount}
             date={item.date}
           />
