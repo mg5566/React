@@ -4,12 +4,10 @@ import "./ExpenseItem.css";
 import { useState } from "react";
 
 const ExpenseItem = (props) => {
-  // let title = props.title;
   const [title, setTitle] = useState(props.title);
 
   const clickHandler = () => {
     setTitle('update!!');
-    console.log('clickHandler', title);
   };
 
   return (

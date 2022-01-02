@@ -1,7 +1,7 @@
 import "./ExpenseForm.css";
 import { useState } from "react";
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ onSaveExpenseData }) => {
   const [userInput, setUserInput] = useState({
     enterdTitle: "",
     enterdAmount: "",
@@ -9,49 +9,47 @@ const ExpenseForm = () => {
   });
 
   const titleChangeHandler = (event) => {
-    // setUserInput({
-    //   ...userInput,
-    //   enterdTitle: event.target.value,
-    // });
     setUserInput((prevState) => {
-      return ({
+      return {
         ...prevState,
         enterdTitle: event.target.value,
-      });
+      };
     });
   };
 
   const amountChangeHandler = (event) => {
     setUserInput((prevState) => {
-      return ({
+      return {
         ...prevState,
-      enterdAmount: event.target.value,
-      });
-    })
+        enterdAmount: event.target.value,
+      };
+    });
   };
 
   const dateChagneHandler = (event) => {
     setUserInput((prevState) => {
-      return ({
+      return {
         ...prevState,
         enterdDate: event.target.value,
-      });
+      };
     });
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log('submit', userInput);
+
     const expenseDate = {
       title: userInput.enterdTitle,
       amount: userInput.enterdAmount,
       date: new Date(userInput.enterdDate),
     };
-    console.log("submit handler", expenseDate);
+
+    onSaveExpenseData(expenseDate);
+
     setUserInput({
-      enterdTitle: '',
-      enterdAmount: '',
-      enterdDate: '',
+      enterdTitle: "",
+      enterdAmount: "",
+      enterdDate: "",
     });
   };
 
@@ -60,7 +58,11 @@ const ExpenseForm = () => {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" value={userInput.enterdTitle} onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={userInput.enterdTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
