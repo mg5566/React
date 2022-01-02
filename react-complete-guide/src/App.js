@@ -1,32 +1,36 @@
+import { useState } from "react";
 import Expenses from "./components/Expenses/Expenses.js";
 import NewExpense from "./components/NewExpense/NewExpense.js";
 
+const DUMMY_EXPENSE = [
+  {
+    id: 0,
+    date: new Date(),
+    title: "Desktop PC",
+    amount: "2000.00",
+  },
+  {
+    id: 1,
+    date: new Date(),
+    title: "PS5",
+    amount: "480.00",
+  },
+  {
+    id: 2,
+    date: new Date(),
+    title: "Monitor",
+    amount: "600.00",
+  },
+];
+
 function App() {
-  const expenses = [
-    {
-      id: 0,
-      expenseDate: new Date(),
-      expenseTitle: "Desktop PC",
-      expenseAmount: "2000.00",
-    },
-    {
-      id: 1,
-      expenseDate: new Date(),
-      expenseTitle: "PS5",
-      expenseAmount: "480.00",
-    },
-    {
-      id: 2,
-      expenseDate: new Date(),
-      expenseTitle: "Monitor",
-      expenseAmount: "600.00",
-    },
-  ];
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSE);
 
   const addExpenseHandler = (expense) => {
-    console.log("in App.js", expense);
-    expenses.push(expense);
-
+    // setExpenses([expense, ...expenses]);
+    setExpenses((prevState) => {
+      return ([expense, ...prevState]);
+    })
   };
 
   return (
