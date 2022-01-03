@@ -19,6 +19,7 @@ const AddUser = (props) => {
       setIsValid(false);
       return ;
     }
+    props.onAddUser(enteredUserName, enteredAge);
     setEnteredUserName("");
     setEnteredAge('');
   };

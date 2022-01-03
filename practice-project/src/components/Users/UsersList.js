@@ -1,19 +1,20 @@
 import styles from "./UsersList.module.css";
 
+import Card from "../UI/Card.js";
+
 const UsersList = (props) => {
   return (
-    <div className={styles.users}>
+    <Card className={styles.users}>
       <ul>
-        {props.items.map((item) => {
+        {props.users.map((user) => {
           return (
-            <li key={item.id}>
-              <div>{item.userName}</div>
-              <div>{item.age}</div>
+            <li key={user.id}>
+              <div>{user.name} ({user.age} years old)</div>
             </li>
           );
         })}
       </ul>
-    </div>
+    </Card>
   );
 };
 
