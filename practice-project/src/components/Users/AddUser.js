@@ -7,21 +7,29 @@ import ErrorModal from "../UI/ErrorModal";
 const AddUser = (props) => {
   const [enteredUserName, setEnteredUserName] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
-  const [error, setError] = useState({});
+  const [error, setError] = useState();
 
   const addUserHandler = (event) => {
     event.preventDefault();
     console.log("addUserHandler", enteredUserName, enteredAge);
     if (enteredUserName.trim().length === 0 || enteredAge.trim().length === 0) {
-
+      setError({
+        title: "올바른 입력을 하라 시팔",
+        message:
+          "User Name 과 Age 를 똑바로 입려하고 추가하기를 누르렴 빡치게 하지 마렴",
+      });
       return;
     }
     if (+enteredAge < 1) {
+      setError({
+        title: "나이가 올바르지 않단다",
+        message:
+          "나이가 음수가 될 수 있겠니? 다시 생각하고 추가하기를 클릭하렴",
+      });
       return;
     }
     props.onAddUser(enteredUserName, enteredAge);
-    setEnteredUserName("");
-    setEnteredAge("");
+    errorHandler();
   };
 
   const userNameChangeHandler = (event) => {
@@ -32,9 +40,21 @@ const AddUser = (props) => {
     setEnteredAge(event.target.value);
   };
 
+  const errorHandler = () => {
+    setEnteredUserName("");
+    setEnteredAge("");
+    setError();
+  };
+
   return (
     <div>
-      <ErrorModal title="An Error occured!" message="Something went wrong!" />
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
+      )}
       <Card className={styles.input}>
         <form onSubmit={addUserHandler}>
           <label htmlFor="username">User Name</label>
