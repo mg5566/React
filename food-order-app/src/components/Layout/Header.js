@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./Header.module.css";
 
-import headerBackgroundImg from "../../assets/header_background.png";
+import headerBackgroundImg from "../../assets/Monterey.jpeg";
 import HeaderCartButton from "./HeaderCartButton";
 
 const Header = () => {
