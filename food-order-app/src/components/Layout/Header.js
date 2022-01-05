@@ -3,16 +3,17 @@ import React from "react";
 import styles from "./Header.module.css";
 
 import headerBackgroundImg from "../../assets/header_background.png";
+import HeaderCartButton from "./HeaderCartButton";
 
 const Header = () => {
   return (
     <React.Fragment>
       <header className={styles.header}>
         <h1>React Meals</h1>
-        <button>Cart</button>
+        <HeaderCartButton />
       </header>
       <div className={styles['main-image']}>
-        <img src={headerBackgroundImg} alt="MacBook Background" />
+        <img src={headerBackgroundImg} alt="A MacBook Background" />
       </div>
     </React.Fragment>
   );
