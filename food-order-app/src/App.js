@@ -1,11 +1,28 @@
+import { useState } from "react";
+import Header from "./components/Layout/Header.js";
+import Meals from "./components/Meals/Meals.js";
+import Cart from "./components/Cart/Cart.js";
+import CartProvider from "./store/CartProvider.js";
+
 function App() {
+  const [cartIsShow, setCartIsShow] = useState(false);
+
+  const showCartHandler = () => {
+    setCartIsShow(true);
+  };
+
+  const hideCartHandler = () => {
+    setCartIsShow(false);
+  };
+
   return (
-    <div>
-        제발 취업 시켜주세요...
-        취업이 하고 싶니?
-        그럼 'build Food Order App~'
-        Okay Let's move
-    </div>
+    <CartProvider>
+      {cartIsShow && <Cart onClose={hideCartHandler} />}
+      <Header onShowCart={showCartHandler} />
+      <main>
+        <Meals />
+      </main>
+    </CartProvider>
   );
 }
 
