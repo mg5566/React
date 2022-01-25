@@ -35,7 +35,7 @@ const Checkout = (props) => {
       street: enteredStreetIsValid,
       postalCode: enteredPostalCodeIsValid,
       city: enteredCityIsValid,
-    })
+    });
 
     const formIsValid =
       enteredNameIsValid &&
@@ -44,7 +44,7 @@ const Checkout = (props) => {
       enteredCityIsValid;
 
     if (!formIsValid) {
-      return ;
+      return;
     }
 
     console.log(
@@ -55,12 +55,27 @@ const Checkout = (props) => {
       enteredPostalCode,
       enteredCity
     );
+
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      postalCode: enteredPostalCode,
+      city: enteredCity,
+    });
   };
 
-  const nameControlClasses = `${styles.control} ${!formInputsValidity.name && styles.invalid}`
-  const streetControlClasses = `${styles.control} ${!formInputsValidity.street && styles.invalid}`
-  const postalCodeControlClasses = `${styles.control} ${!formInputsValidity.postalCode && styles.invalid}`
-  const cityControlClasses = `${styles.control} ${!formInputsValidity.city && styles.invalid}`
+  const nameControlClasses = `${styles.control} ${
+    !formInputsValidity.name && styles.invalid
+  }`;
+  const streetControlClasses = `${styles.control} ${
+    !formInputsValidity.street && styles.invalid
+  }`;
+  const postalCodeControlClasses = `${styles.control} ${
+    !formInputsValidity.postalCode && styles.invalid
+  }`;
+  const cityControlClasses = `${styles.control} ${
+    !formInputsValidity.city && styles.invalid
+  }`;
 
   return (
     <form className={styles.form} onSubmit={confirmHandler}>
@@ -77,7 +92,9 @@ const Checkout = (props) => {
       <div className={postalCodeControlClasses}>
         <label htmlFor="postalCode">Postal Code</label>
         <input type="text" id="postal" ref={postalCodeInputRef} />
-        {!formInputsValidity.postalCode && <p>Please enter a valid Postal Code!</p>}
+        {!formInputsValidity.postalCode && (
+          <p>Please enter a valid Postal Code!</p>
+        )}
       </div>
       <div className={cityControlClasses}>
         <label htmlFor="city">City</label>
