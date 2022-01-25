@@ -7,7 +7,7 @@ const Checkout = (props) => {
   }
 
   return (
-    <form onSubmit={confirmHandler}>
+    <form className={styles.form} onSubmit={confirmHandler}>
       <div className={styles.control}>
         <label htmlFor="name">Your Name</label>
         <input type="text" id="name" />
@@ -24,8 +24,10 @@ const Checkout = (props) => {
         <label htmlFor="city">City</label>
         <input type="text" id="city" />
       </div>
+      <div className={styles.actions}>
       <button type="button" onClick={props.onCancle}>Cancle</button>
-      <button>Confirm</button>
+      <button className={styles.submit}>Confirm</button>
+      </div>
     </form>
   );
 };
