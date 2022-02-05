@@ -4,8 +4,8 @@ import classes from "./Counter.module.css";
 
 const Counter = () => {
   const dispatch = useDispatch();
-  const counter = useSelector((state) => state.counter);
-  const isShowCounter = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const isShowCounter = useSelector((state) => state.counter.showCounter);
 
   const toggleCounterHandler = () => {
     dispatch(counterActions.toggleCounter());
@@ -14,7 +14,7 @@ const Counter = () => {
     dispatch(counterActions.increment());
   };
   const increaseHandler = () => {
-    dispatch(counterActions.increase(10));  // { type: SOME_UNIQUE_IDENTIFIER, payload: 10 }
+    dispatch(counterActions.increase(10)); // { type: SOME_UNIQUE_IDENTIFIER, payload: 10 }
   };
   const decrementHandler = () => {
     dispatch(counterActions.decrement());
