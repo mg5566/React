@@ -13,7 +13,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/auth" element={<AuthPage />} />
+        {!authCtx.isLoggedIn && <Route path="/auth" element={<AuthPage />} />}
         <Route
           path="/profile"
           element={
