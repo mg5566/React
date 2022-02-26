@@ -6,11 +6,12 @@ const MeetupList = (props) => {
     <ul className={classes.list}>
       {props.meets.map((meetup) => (
         <MeetupItem
-        key={meetup.id}
-        id={meetup.id}
-        image={meetup.image}
-        title={meetup.title}
-        address={meetup.address} />
+          key={meetup.id}
+          id={meetup.id}
+          image={meetup.image}
+          title={meetup.title}
+          address={meetup.address}
+        />
       ))}
     </ul>
   );
