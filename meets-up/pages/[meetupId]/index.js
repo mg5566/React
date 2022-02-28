@@ -1,18 +1,24 @@
 import { MongoClient, ObjectId } from "mongodb";
+import Head from "next/head";
+import { Fragment } from "react";
 
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 import Card from "../../components/ui/Card";
 
 const MeetupDetails = (props) => {
   return (
-    <Card>
+    <Fragment>
+      <Head>
+        <title>Meetup {props.meetupData.title}</title>
+        <meta name="description" content={`Meetup 을 확인하세요. ${props.meetupData.description}`} />
+      </Head>
       <MeetupDetail
         image={props.meetupData.image}
         title={props.meetupData.title}
         description={props.meetupData.description}
         address={props.meetupData.address}
       />
-    </Card>
+    </Fragment>
   );
 };
 
