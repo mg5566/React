@@ -4,7 +4,7 @@ import Transition from "react-transition-group/Transition";
 import "./App.css";
 import Modal from "./components/Modal/Modal";
 import Backdrop from "./components/Backdrop/Backdrop";
-// import List from "./components/List/List";
+import List from "./components/List/List";
 
 const transitionStyles = {
   entering: { opacity: 0 },
@@ -35,7 +35,14 @@ const App = () => {
         toggle
       </button>
       <br />
-      <Transition in={showBlock} timeout={600} mountOnEnter unmountOnExit>
+      <Transition
+        in={showBlock}
+        timeout={600}
+        mountOnEnter
+        unmountOnExit
+        onEnter={() => console.log("onEnter")}
+        onExit={() => console.log("onExit")}
+      >
         {(state) => (
           <div
             style={{
@@ -60,8 +67,8 @@ const App = () => {
       <button className="Button" onClick={showModal}>
         Open Modal
       </button>
-      {/* <h3>Animating Lists</h3> */}
-      {/* <List /> */}
+      <h3>Animating Lists</h3>
+      <List />
     </div>
   );
 };

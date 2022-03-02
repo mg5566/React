@@ -6,27 +6,18 @@ const List = () => {
   const [items, setItems] = useState([1, 2, 3]);
 
   const addItemHandler = () => {
-    this.setState((prevState) => {
-      return {
-        items: prevState.items.concat(prevState.items.length + 1),
-      };
-    });
+    setItems((prevState) => [...prevState, prevState.length + 1]);
   };
 
   const removeItemHandler = (selIndex) => {
-    this.setState((prevState) => {
-      return {
-        items: prevState.items.filter((item, index) => index !== selIndex),
-      };
-    });
+    // console.log("List removeItemHandler", selIndex)
+    setItems((prevState) =>
+      prevState.filter((item, index) => index !== selIndex)
+    );
   };
 
-  const listItems = this.state.items.map((item, index) => (
-    <li
-      key={index}
-      className="ListItem"
-      onClick={removeItemHandler}
-    >
+  const listItems = items.map((item, index) => (
+    <li key={index} className="ListItem" onClick={() => removeItemHandler(index)}>
       {item}
     </li>
   ));
