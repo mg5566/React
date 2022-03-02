@@ -29,7 +29,7 @@ const initialState = {
     {
       id: "p5",
       title: "HUMBLE.",
-      description: "Kendrick Lamer - HUMBLE. Bitch, Be humble",
+      description: "Kendrick Lamer - HUMBLE.",
       isFavorite: false,
     },
     {
