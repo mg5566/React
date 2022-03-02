@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import Transition from "react-transition-group/Transition";
 
 import "./App.css";
@@ -49,8 +49,14 @@ const App = () => {
           ></div>
         )}
       </Transition>
-      {modalIsOpen ? <Modal show={modalIsOpen} closed={closeModal} /> : null}
-      {modalIsOpen ? <Backdrop show={modalIsOpen} /> : null}
+      <Transition in={modalIsOpen} timeout={600} mountOnEnter unmountOnExit>
+        {(state) => (
+          <Fragment>
+            <Modal show={modalIsOpen} closed={closeModal} />
+            <Backdrop show={modalIsOpen} closed={closeModal} />
+          </Fragment>
+        )}
+      </Transition>
       <button className="Button" onClick={showModal}>
         Open Modal
       </button>
