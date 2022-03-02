@@ -19,12 +19,12 @@ const App = () => {
   return (
     <div className="App">
       <h1>React Animations</h1>
-      <Modal show={modalIsOpen} closed={closeModal} />
-      <Backdrop show={modalIsOpen} />
+      {modalIsOpen ? <Modal show={modalIsOpen} closed={closeModal} /> : null}
+      {modalIsOpen ? <Backdrop show={modalIsOpen} /> : null}
       <button className="Button" onClick={showModal}>
         Open Modal
       </button>
-      <h3>Animating Lists</h3>
+      {/* <h3>Animating Lists</h3> */}
       {/* <List /> */}
     </div>
   );
