@@ -39,6 +39,7 @@ const configureStore = () => {
         ...curState.products[prodIndex],
         isFavorite: newFavStatus,
       };
+
       return { products: updatedProducts };
     },
   };
