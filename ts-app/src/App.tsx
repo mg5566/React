@@ -10,7 +10,6 @@ function App() {
 
   return (
     <div>
-      {/* <Todos items={["learn React", "learn TypeScript", "learn Next.js"]} /> */}
       <Todos items={todos} />
     </div>
   );
