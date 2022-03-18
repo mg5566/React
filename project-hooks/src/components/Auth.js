@@ -1,3 +1,5 @@
+import Card from "./UI/Card";
+
 const Auth = (props) => {
   const loginHandler = () => {};
 
@@ -11,3 +13,5 @@ const Auth = (props) => {
     </div>
   );
 };
+
+export default Auth;
