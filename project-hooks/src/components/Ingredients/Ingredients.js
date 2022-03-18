@@ -1,5 +1,6 @@
 import { useState } from "react";
 import IngredientForm from "./IngredientForm";
+import IngredientList from "./IngredientList";
 import Search from "./Search";
 
 const Ingredients = () => {
@@ -18,6 +19,7 @@ const Ingredients = () => {
 
       <section>
         <Search />
+        <IngredientList ingredients={userIngredients} />
       </section>
     </div>
   );

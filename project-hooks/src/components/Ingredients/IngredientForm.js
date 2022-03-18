@@ -12,6 +12,8 @@ const IngredientForm = (props) => {
     event.preventDefault();
 
     props.onAddIngredient({title: enteredTitle, amount: enteredAmount});
+    setEnteredTitle('');
+    setEnteredAmount('');
   };
 
   return (
