@@ -4,7 +4,9 @@ import Card from "../UI/Card";
 import "./IngredientForm.css";
 
 const IngredientForm = () => {
-  const inputState = useState({ title: "", amount: "" });
+  // const [inputState, setInputState] = useState({ title: "", amount: "" });
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -19,12 +21,9 @@ const IngredientForm = () => {
             <input
               id="title"
               type="text"
-              value={inputState[0].title}
+              value={enteredTitle}
               onChange={(event) => {
-                inputState[1]((prevState) => ({
-                  title: event.target.value,
-                  amount: prevState.amount,
-                }));
+                setEnteredTitle(event.target.value);
               }}
             />
           </div>
@@ -33,12 +32,9 @@ const IngredientForm = () => {
             <input
               id="amount"
               type="number"
-              value={inputState[0].amount}
+              value={enteredAmount}
               onChange={(event) => {
-                inputState[1]((prevState) => ({
-                  amount: event.target.value,
-                  title: prevState.title,
-                }));
+                setEnteredAmount(event.target.value);
               }}
             />
           </div>
