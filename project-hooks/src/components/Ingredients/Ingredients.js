@@ -7,10 +7,22 @@ const Ingredients = () => {
   const [userIngredients, setUserIngredients] = useState([]);
 
   const addIngredientHandler = (ingredient) => {
-    setUserIngredients((prevState) => [
-      ...prevState,
-      { id: Math.random().toString(), ...ingredient },
-    ]);
+    fetch("https://react-26863-default-rtdb.firebaseio.com/ingredient.json", {
+      method: "POST",
+      body: JSON.stringify(ingredient),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseData) => {
+        setUserIngredients((prevState) => [
+          ...prevState,
+          { id: responseData.name, ...ingredient },
+        ]);
+      });
   };
 
   const removeIngredientHandler = (id) => {

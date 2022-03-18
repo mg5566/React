@@ -11,9 +11,9 @@ const IngredientForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    props.onAddIngredient({title: enteredTitle, amount: enteredAmount});
-    setEnteredTitle('');
-    setEnteredAmount('');
+    props.onAddIngredient({ title: enteredTitle, amount: enteredAmount });
+    setEnteredTitle("");
+    setEnteredAmount("");
   };
 
   return (
