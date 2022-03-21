@@ -20,7 +20,7 @@ const ingredientReducer = (currentIngredients, action) => {
 
 const Ingredients = React.memo(() => {
   const [userIngredients, dispatch] = useReducer(ingredientReducer, []);
-  const { isLoading, error, data, sendRequest, reqExtra, reqIdentifer } =
+  const { isLoading, error, data, sendRequest, reqExtra, reqIdentifer, clear } =
     useHttp();
 
   useEffect(() => {
@@ -64,8 +64,9 @@ const Ingredients = React.memo(() => {
     dispatch({ type: "SET", ingredients: filteredIngredients });
   }, []);
 
-  const clearError = useCallback(() => {
-  }, []);
+  // const clearError = useCallback(() => {
+  //   clear();
+  // }, [clear]);
 
   const ingredientList = useMemo(() => {
     return (
@@ -78,7 +79,7 @@ const Ingredients = React.memo(() => {
 
   return (
     <div className="App">
-      {error && <ErrorModal onClose={clearError}>{error}</ErrorModal>}
+      {error && <ErrorModal onClose={clear}>{error}</ErrorModal>}
       <IngredientForm
         onAddIngredient={addIngredientHandler}
         loading={isLoading}
