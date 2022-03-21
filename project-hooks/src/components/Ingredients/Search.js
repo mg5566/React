@@ -10,7 +10,7 @@ const Search = (props) => {
 
   useEffect(() => {
     // console.log("Search render", enteredFilter);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (enteredFilter === inputRef.current.value) {
         const query =
           enteredFilter.length === 0
@@ -35,7 +35,10 @@ const Search = (props) => {
           });
       }
     }, 500);
-  }, [enteredFilter, onLoadIngredients]);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [enteredFilter, onLoadIngredients, inputRef]);
 
   return (
     <section className="search">

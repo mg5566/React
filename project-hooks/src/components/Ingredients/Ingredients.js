@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import IngredientForm from "./IngredientForm";
 import IngredientList from "./IngredientList";
 import Search from "./Search";
@@ -43,9 +43,16 @@ const Ingredients = () => {
   };
 
   const removeIngredientHandler = (id) => {
-    setUserIngredients((prevState) =>
-      prevState.filter((item) => item.id !== id)
-    );
+    fetch(
+      `https://react-26863-default-rtdb.firebaseio.com/ingredient/${id}.json`,
+      {
+        method: "DELETE",
+      }
+    ).then((response) => {
+      setUserIngredients((prevState) =>
+        prevState.filter((item) => item.id !== id)
+      );
+    });
   };
 
   const filteredIngredientsHandler = useCallback((filteredIngredients) => {
