@@ -1,12 +1,15 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Card from "../UI/Card";
 
 import LoadingIndicator from "../UI/LoadingIndicator";
 import "./IngredientForm.css";
 
-const IngredientForm = (props) => {
+const IngredientForm = React.memo((props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
+
+  // how many render?!
+  console.log("IngredientForm render");
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -50,6 +53,6 @@ const IngredientForm = (props) => {
       </Card>
     </section>
   );
-};
+});
 
 export default IngredientForm;

@@ -1,4 +1,4 @@
-import { useCallback, useReducer } from "react";
+import React, { useCallback, useMemo, useReducer } from "react";
 import IngredientForm from "./IngredientForm";
 import IngredientList from "./IngredientList";
 import Search from "./Search";
@@ -32,14 +32,14 @@ const httpReducer = (currentHttpState, action) => {
   }
 };
 
-const Ingredients = () => {
+const Ingredients = React.memo(() => {
   const [userIngredients, dispatch] = useReducer(ingredientReducer, []);
   const [httpState, dispatchHttp] = useReducer(httpReducer, {
     loading: false,
     error: null,
   });
 
-  const addIngredientHandler = (ingredient) => {
+  const addIngredientHandler = useCallback((ingredient) => {
     dispatchHttp({ type: "SEND" });
     fetch("https://react-26863-default-rtdb.firebaseio.com/ingredient.json", {
       method: "POST",
@@ -58,9 +58,9 @@ const Ingredients = () => {
           ingredient: { id: responseData.name, ...ingredient },
         });
       });
-  };
+  }, []);
 
-  const removeIngredientHandler = (id) => {
+  const removeIngredientHandler = useCallback((id) => {
     dispatchHttp({ type: "SEND" });
     fetch(
       `https://react-26863-default-rtdb.firebaseio.com/ingredient/${id}.json`,
@@ -75,15 +75,24 @@ const Ingredients = () => {
       .catch((error) => {
         dispatchHttp({ type: "ERROR", errorData: error.message });
       });
-  };
+  }, []);
 
   const filteredIngredientsHandler = useCallback((filteredIngredients) => {
     dispatch({ type: "SET", ingredients: filteredIngredients });
   }, []);
 
-  const clearError = () => {
+  const clearError = useCallback(() => {
     dispatchHttp({ type: "CLEAR" });
-  };
+  }, []);
+
+  const ingredientList = useMemo(() => {
+    return (
+      <IngredientList
+        ingredients={userIngredients}
+        onRemoveIngredient={removeIngredientHandler}
+      />
+    );
+  }, [removeIngredientHandler, userIngredients]);
 
   return (
     <div className="App">
@@ -97,13 +106,14 @@ const Ingredients = () => {
 
       <section>
         <Search onLoadIngredients={filteredIngredientsHandler} />
-        <IngredientList
+        {/* <IngredientList
           ingredients={userIngredients}
           onRemoveIngredient={removeIngredientHandler}
-        />
+        /> */}
+        {ingredientList}
       </section>
     </div>
   );
-};
+});
 
 export default Ingredients;

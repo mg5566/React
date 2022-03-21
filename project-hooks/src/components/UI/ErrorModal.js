@@ -1,7 +1,7 @@
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import "./ErrorModal.css";
 
-const ErrorModal = (props) => {
+const ErrorModal = React.memo((props) => {
   return (
     <Fragment>
       <div className="backdrop" onClick={props.onClose} />
@@ -16,6 +16,6 @@ const ErrorModal = (props) => {
       </div>
     </Fragment>
   );
-};
+});
 
 export default ErrorModal;
