@@ -1,9 +1,9 @@
-import { Fragement } from "react";
+import { Fragment } from "react";
 import "./ErrorModal.css";
 
 const ErrorModal = (props) => {
   return (
-    <Fragement>
+    <Fragment>
       <div className="backdrop" onClick={props.onClose} />
       <div className="error-modal">
         <h2>Error!</h2>
@@ -14,7 +14,7 @@ const ErrorModal = (props) => {
           </button>
         </div>
       </div>
-    </Fragement>
+    </Fragment>
   );
 };
 
